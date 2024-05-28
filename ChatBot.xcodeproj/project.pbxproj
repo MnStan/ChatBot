@@ -14,6 +14,7 @@
 		F635A0C72C066426000C6715 /* ChatBotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0C62C066426000C6715 /* ChatBotTests.swift */; };
 		F635A0D12C066426000C6715 /* ChatBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0D02C066426000C6715 /* ChatBotUITests.swift */; };
 		F635A0D32C066426000C6715 /* ChatBotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0D22C066426000C6715 /* ChatBotUITestsLaunchTests.swift */; };
+		F635A0E12C066460000C6715 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = F635A0E02C066460000C6715 /* PythonKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F635A0E12C066460000C6715 /* PythonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +147,9 @@
 			dependencies = (
 			);
 			name = ChatBot;
+			packageProductDependencies = (
+				F635A0E02C066460000C6715 /* PythonKit */,
+			);
 			productName = ChatBot;
 			productReference = F635A0B12C066424000C6715 /* ChatBot.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +222,9 @@
 				Base,
 			);
 			mainGroup = F635A0A82C066424000C6715;
+			packageReferences = (
+				F635A0DF2C066460000C6715 /* XCRemoteSwiftPackageReference "PythonKit" */,
+			);
 			productRefGroup = F635A0B22C066424000C6715 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -581,6 +589,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F635A0DF2C066460000C6715 /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F635A0E02C066460000C6715 /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F635A0DF2C066460000C6715 /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F635A0A92C066424000C6715 /* Project object */;
 }

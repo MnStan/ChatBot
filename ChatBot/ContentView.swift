@@ -9,26 +9,33 @@ import SwiftUI
 import PythonKit
 
 struct ContentView: View {
+    @State private var answer = ""
+    @State private var isShowingAnswer = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            
-            Button("Test") {
-                testPython()
+        ZStack {
+            Color.gray
+            VStack {
+                if isShowingAnswer {
+                    Text(answer)
+                }
+                
+                
+                Button("Test") {
+                    testPython()
+                }
             }
+            .padding()
         }
-        .padding()
     }
     
     func testPython() {
         let sys = Python.import("sys")
-
-        print("Python \(sys.version_info.major).\(sys.version_info.minor)")
-        print("Python Version: \(sys.version)")
-        print("Python Encoding: \(sys.getdefaultencoding().upper())")
+        sys.path.append("/Users/stan/Desktop/Swift/ChatBot/ChatBot/")
+        let file = Python.import("LevianPythonScript")
+        
+        answer = String(describing: file.getAnswer(text: "Hello how are you doing?"))
+        isShowingAnswer.toggle()
     }
 }
 

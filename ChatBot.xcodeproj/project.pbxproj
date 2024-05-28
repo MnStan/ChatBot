@@ -15,6 +15,8 @@
 		F635A0D12C066426000C6715 /* ChatBotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0D02C066426000C6715 /* ChatBotUITests.swift */; };
 		F635A0D32C066426000C6715 /* ChatBotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0D22C066426000C6715 /* ChatBotUITestsLaunchTests.swift */; };
 		F635A0E12C066460000C6715 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = F635A0E02C066460000C6715 /* PythonKit */; };
+		F635A0E32C066632000C6715 /* LevianPythonScript.py in Resources */ = {isa = PBXBuildFile; fileRef = F635A0E22C066632000C6715 /* LevianPythonScript.py */; };
+		F635A0E52C066862000C6715 /* Database.csv in Resources */ = {isa = PBXBuildFile; fileRef = F635A0E42C066862000C6715 /* Database.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		F635A0CC2C066426000C6715 /* ChatBotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatBotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F635A0D02C066426000C6715 /* ChatBotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotUITests.swift; sourceTree = "<group>"; };
 		F635A0D22C066426000C6715 /* ChatBotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F635A0E22C066632000C6715 /* LevianPythonScript.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = LevianPythonScript.py; sourceTree = "<group>"; };
+		F635A0E42C066862000C6715 /* Database.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Database.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,9 @@
 				F635A0B62C066424000C6715 /* ContentView.swift */,
 				F635A0B82C066426000C6715 /* Assets.xcassets */,
 				F635A0BD2C066426000C6715 /* ChatBot.entitlements */,
+				F635A0E42C066862000C6715 /* Database.csv */,
 				F635A0BA2C066426000C6715 /* Preview Content */,
+				F635A0E22C066632000C6715 /* LevianPythonScript.py */,
 			);
 			path = ChatBot;
 			sourceTree = "<group>";
@@ -243,6 +249,8 @@
 			files = (
 				F635A0BC2C066426000C6715 /* Preview Assets.xcassets in Resources */,
 				F635A0B92C066426000C6715 /* Assets.xcassets in Resources */,
+				F635A0E32C066632000C6715 /* LevianPythonScript.py in Resources */,
+				F635A0E52C066862000C6715 /* Database.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

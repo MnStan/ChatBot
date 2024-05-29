@@ -65,9 +65,8 @@ def find_similar_question(user_question, database):
 def load_database(filename):
     database = {}
     
-    script_dir = os.path.dirname(os.path.realpath(__file__))  # Get the directory of the current script
-    os.chdir(script_dir)  # Change the working directory to the script directory
-    print("Current Working Directory:", os.getcwd())
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    os.chdir(script_dir)
     
     with open(filename, 'r', newline='') as file:
         reader = csv.reader(file, delimiter=';')
@@ -80,16 +79,12 @@ def load_database(filename):
     return database
 
 def chatbot(database, text):
-    print("Hello! I'm your string similarity calculator bot.")
-    
     user_question = text.strip().lower()
     most_similar_question, similarity = find_similar_question(user_question, database)
     if similarity > 0.6:  # Adjust this threshold as needed
-        #print("Answer:", database[most_similar_question])
         return database[most_similar_question]
     else:
         return "Sorry, I don't have an answer to that question."
-        #print("Sorry, I don't have an answer to that question.")
 
 def getAnswer(text):
     database = load_database("Database.csv")

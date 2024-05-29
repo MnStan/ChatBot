@@ -33,9 +33,11 @@ struct MessageCell: View {
                     .alignmentGuide(.firstTextBaseline) { d in d[VerticalAlignment.firstTextBaseline] }
                     .onAppear {
                         shouldRepeat = false
-                        isShowingAnswer = true
+                        isShowingAnswer = !currentMessage.wasLoaded
+                        
                         if currentMessage.isCurrentUser {
                             displayedText = currentMessage.content
+                            currentMessage.wasLoaded = true
                         } else {
                             if currentMessage.wasLoaded == true {
                                 displayedText = currentMessage.content
@@ -55,7 +57,7 @@ struct MessageCell: View {
                 }
             }
             
-            if isTyping == false && !currentMessage.isCurrentUser {
+            if !currentMessage.isCurrentUser {
                 HStack {
                     Button {
                         copyToClipboard(text: currentMessage.content)
@@ -97,6 +99,8 @@ struct MessageCell: View {
                     }
                 }
                         .padding(.leading, 10)
+                        .opacity(isTyping ? 0.0 : 1.0)
+                        .animation(.easeInOut(duration: 1), value: isTyping)
             }
         }
     }
@@ -109,7 +113,9 @@ struct MessageCell: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.02 * Double(index)) {
                     displayedText.append(character)
                     if index == fullTextArray.count - 1 {
-                        isTyping = false
+                        withAnimation {
+                            isTyping = false
+                        }
                         isShowingAnswer = false
                         currentMessage.wasLoaded = true
                     }

@@ -20,12 +20,22 @@ struct ContentView: View {
             if messages.isEmpty {
                 ContentUnavailableView("Start your conversation", systemImage: "brain.filled.head.profile", description: Text("You can ask whatever you want! Have fun!"))
             } else {
-                List($messages, id: \.self) { message in
-                    MessageView(shouldCallRepeat: $shouldRepeat, isShowingAnswer: $isShowingAnswer, currentMessage: message, isLast: .constant(isLastMessage(message.wrappedValue)))
 
-                        .listRowSeparator(.hidden)
+                ScrollViewReader { proxy in
+                    List($messages, id: \.self) { message in
+                        MessageView(shouldCallRepeat: $shouldRepeat, isShowingAnswer: $isShowingAnswer, currentMessage: message, isLast: .constant(isLastMessage(message.wrappedValue)))
+                            .id(message.wrappedValue.id)
+                            .listRowSeparator(.hidden)
+                    }
+                    .scrollContentBackground(.hidden)
+                    .onChange(of: messages.count) {
+                        withAnimation {
+                            if let lastMessage = messages.last {
+                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                            }
+                        }
+                    }
                 }
-                .scrollContentBackground(.hidden)
             }
             
             Spacer()

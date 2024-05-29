@@ -12,13 +12,14 @@ struct ContentView: View {
     @State private var answer = ""
     @State private var isShowingAnswer = false
     @State private var question = ""
+    @State private var shouldRepeat = false
     
     @State var messages: [Message] = []
     
     var body: some View {
         VStack {
             List(messages, id: \.self) { message in
-                MessageView(currentMessage: message)
+                MessageView(shouldCallRepeat: $shouldRepeat, currentMessage: message)
                     .listRowSeparator(.hidden)
             }
             .scrollContentBackground(.hidden)
@@ -38,6 +39,12 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onChange(of: shouldRepeat) { _, newValue in
+            if newValue {
+                messages.removeLast()
+                testPython(question)
+            }
+        }
     }
     
     func testPython(_ question: String) {
@@ -45,9 +52,7 @@ struct ContentView: View {
         sys.path.append("/Users/stan/Desktop/Swift/ChatBot/ChatBot/")
         let file = Python.import("LevianPythonScript")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            messages.append(Message(content: String(describing: file.getAnswer(text: question)), isCurrentUser: false))
-        }
+        messages.append(Message(content: String(describing: file.getAnswer(text: question)), isCurrentUser: false))
     }
 }
 

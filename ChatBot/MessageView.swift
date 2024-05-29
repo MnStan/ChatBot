@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct MessageView : View {
+    @Binding var shouldCallRepeat: Bool
     var currentMessage: Message
     
     var body: some View {
-        HStack(alignment: .center, spacing: 10) {
+        HStack(alignment: .firstTextBaseline, spacing: 10) {
             if !currentMessage.isCurrentUser {
                 ZStack(alignment: .center) {
                     Circle()
@@ -23,19 +24,20 @@ struct MessageView : View {
                         .frame(width: 15, height: 15)
                         .padding(5)
                 }
+                .alignmentGuide(.firstTextBaseline) { d in d[VerticalAlignment.center] }
             } else {
                 Spacer()
             }
             
-            MessageCell(contentMessage: currentMessage.content,
+            MessageCell(shouldRepeat: $shouldCallRepeat, contentMessage: currentMessage.content,
                         isCurrentUser: currentMessage.isCurrentUser)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
     }
 }
 
 
 #Preview {
-    MessageView(currentMessage: Message(content: "This is a single message cell with avatar. If user is current user avatar is not displayed.", isCurrentUser: false))
+    MessageView(shouldCallRepeat: .constant(false), currentMessage: Message(content: "This is a single message cell with avatar. If user is current user avatar is not displayed.", isCurrentUser: false))
+        .frame(height: 500)
 }

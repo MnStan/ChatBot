@@ -20,6 +20,7 @@
 		F635A0E72C067262000C6715 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0E62C067262000C6715 /* Message.swift */; };
 		F635A0E92C067288000C6715 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0E82C067288000C6715 /* MessageView.swift */; };
 		F635A0EB2C0672A5000C6715 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0EA2C0672A5000C6715 /* MessageCell.swift */; };
+		F635A0ED2C072E97000C6715 /* LoadingDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0EC2C072E97000C6715 /* LoadingDotsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		F635A0E62C067262000C6715 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F635A0E82C067288000C6715 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		F635A0EA2C0672A5000C6715 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		F635A0EC2C072E97000C6715 /* LoadingDotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDotsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				F635A0E62C067262000C6715 /* Message.swift */,
 				F635A0E82C067288000C6715 /* MessageView.swift */,
 				F635A0EA2C0672A5000C6715 /* MessageCell.swift */,
+				F635A0EC2C072E97000C6715 /* LoadingDotsView.swift */,
 			);
 			path = ChatBot;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F635A0E92C067288000C6715 /* MessageView.swift in Sources */,
+				F635A0ED2C072E97000C6715 /* LoadingDotsView.swift in Sources */,
 				F635A0EB2C0672A5000C6715 /* MessageCell.swift in Sources */,
 				F635A0E72C067262000C6715 /* Message.swift in Sources */,
 				F635A0B72C066424000C6715 /* ContentView.swift in Sources */,

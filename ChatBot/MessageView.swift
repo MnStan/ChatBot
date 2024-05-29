@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MessageView : View {
     @Binding var shouldCallRepeat: Bool
-    var currentMessage: Message
+    @Binding var isShowingAnswer: Bool
+    @Binding var currentMessage: Message
+    @Binding var isLast: Bool
     
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 10) {
@@ -29,8 +31,7 @@ struct MessageView : View {
                 Spacer()
             }
             
-            MessageCell(shouldRepeat: $shouldCallRepeat, contentMessage: currentMessage.content,
-                        isCurrentUser: currentMessage.isCurrentUser)
+            MessageCell(shouldRepeat: $shouldCallRepeat, isShowingAnswer: $isShowingAnswer, currentMessage: $currentMessage, isLast: $isLast)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -38,6 +39,6 @@ struct MessageView : View {
 
 
 #Preview {
-    MessageView(shouldCallRepeat: .constant(false), currentMessage: Message(content: "This is a single message cell with avatar. If user is current user avatar is not displayed.", isCurrentUser: false))
+    MessageCell(shouldRepeat: .constant(false), isShowingAnswer: .constant(true), currentMessage: .constant(.example), isLast: .constant(true))
         .frame(height: 500)
 }

@@ -85,7 +85,7 @@ struct ContentView: View {
             }
             .fixedSize(horizontal: true, vertical: true)
         }
-        .padding(.top, 5)
+        .padding(5)
         .frame(maxWidth: 600)
         .onChange(of: shouldRepeat) { _, newValue in
             if newValue {

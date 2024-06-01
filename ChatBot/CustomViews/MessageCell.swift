@@ -107,6 +107,7 @@ struct MessageCell: View {
     
     private func startTypewritterAnimation() {
         displayedText = ""
+        currentMessage.wasLoaded = true
         let fullTextArray = Array(currentMessage.content)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             for (index, character) in fullTextArray.enumerated() {
@@ -117,7 +118,6 @@ struct MessageCell: View {
                             isTyping = false
                         }
                         isShowingAnswer = false
-                        currentMessage.wasLoaded = true
                     }
                 }
             }

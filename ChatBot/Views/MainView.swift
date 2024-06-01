@@ -8,15 +8,6 @@
 import SwiftUI
 import SwiftData
 
-extension DateFormatter {
-    static let shortDate: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        return formatter
-    }()
-}
-
 struct MainView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \History.date, order: .reverse) private var history: [History]
@@ -25,17 +16,27 @@ struct MainView: View {
     @State private var hoveringStates: [UUID: Bool] = [:]
     @State private var isAddButtonHovered = false
     @State private var isMenuButtonHovered = false
+    @State private var searchText = ""
+    
+    private var filteredHisotry: [History] {
+        if searchText.isEmpty {
+            return history
+        } else {
+            return history.filter { $0.messages.contains { $0.content.localizedCaseInsensitiveContains(searchText) } }
+        }
+    }
     
     var body: some View {
         NavigationSplitView {
-            List(history, id: \.id, selection: $selectedChat) { chat in
-                HStack {
-                    if let firstMessage = chat.messages.sorted(by: { $0.date < $1.date }).first?.content {
-                        Text(firstMessage)
-                    }
-                    
-                    Spacer()
-                    
+                List(filteredHisotry, id: \.id, selection: $selectedChat) { chat in
+                    HStack {
+                        if let firstMessage = chat.messages.sorted(by: { $0.date < $1.date }).first?.content {
+                            Text(firstMessage)
+                                .font(.callout)
+                        }
+                        
+                        Spacer()
+                        
                         Menu {
                             Button("Delete") {
                                 deleteItem(chat: chat)
@@ -46,9 +47,10 @@ struct MainView: View {
                         .menuStyle(BorderlessButtonMenuStyle())
                         .menuIndicator(.hidden)
                         .frame(width: 30)
+                    }
+                    .tag(chat)
                 }
-                .tag(chat)
-            }
+                .searchable(text: $searchText, placement: .sidebar)
             
         } detail: {
             ContentView(messages: Binding(

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F632F32F2C0B2CF3008A8B5F /* DateFormatter+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F632F32E2C0B2CF3008A8B5F /* DateFormatter+ext.swift */; };
 		F635A0B52C066424000C6715 /* ChatBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0B42C066424000C6715 /* ChatBotApp.swift */; };
 		F635A0B72C066424000C6715 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0B62C066424000C6715 /* ContentView.swift */; };
 		F635A0B92C066426000C6715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F635A0B82C066426000C6715 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F632F32E2C0B2CF3008A8B5F /* DateFormatter+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ext.swift"; sourceTree = "<group>"; };
 		F635A0B12C066424000C6715 /* ChatBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F635A0B42C066424000C6715 /* ChatBotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotApp.swift; sourceTree = "<group>"; };
 		F635A0B62C066424000C6715 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F632F32D2C0B2CE2008A8B5F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F632F32E2C0B2CF3008A8B5F /* DateFormatter+ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F635A0A82C066424000C6715 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		F635A0B32C066424000C6715 /* ChatBot */ = {
 			isa = PBXGroup;
 			children = (
+				F632F32D2C0B2CE2008A8B5F /* Extensions */,
 				F635A0F32C076F77000C6715 /* Models */,
 				F635A0F22C076F09000C6715 /* PythonFiles */,
 				F635A0F12C076EF9000C6715 /* CustomViews */,
@@ -329,6 +340,7 @@
 				F635A0EF2C076D4C000C6715 /* MainView.swift in Sources */,
 				F635A0F52C076F86000C6715 /* History.swift in Sources */,
 				F635A0ED2C072E97000C6715 /* LoadingDotsView.swift in Sources */,
+				F632F32F2C0B2CF3008A8B5F /* DateFormatter+ext.swift in Sources */,
 				F635A0EB2C0672A5000C6715 /* MessageCell.swift in Sources */,
 				F635A0E72C067262000C6715 /* Message.swift in Sources */,
 				F635A0B72C066424000C6715 /* ContentView.swift in Sources */,

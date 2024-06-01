@@ -137,4 +137,5 @@ struct MessageCell: View {
 
 #Preview {
     MessageCell(shouldRepeat: .constant(false), isShowingAnswer: .constant(true), currentMessage: .constant(.example), isLast: .constant(true))
+        .frame(width: 400, height: 400)
 }

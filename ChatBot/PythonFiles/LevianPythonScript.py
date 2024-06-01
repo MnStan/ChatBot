@@ -1,5 +1,6 @@
 import csv
 import os
+import random
 
 # Function to calculate similarity using Levenshtein distance considering replacements
 def similarity_from_levenshtein_replacement(str1, str2):
@@ -68,12 +69,16 @@ def load_database(filename):
     script_dir = os.path.dirname(os.path.realpath(__file__))
     os.chdir(script_dir)
     
-    with open(filename, 'r', newline='') as file:
-        reader = csv.reader(file, delimiter=';')
+    with open(filename, 'r', newline='', encoding='utf-8-sig') as file:
+        reader = csv.reader(file, delimiter='-')
         for row in reader:
             if len(row) == 2:
                 question, answer = row
-                database[question.strip().lower()] = answer.strip()
+                question = question.strip().lower()
+                if question in database:
+                    database[question].append(answer.strip())
+                else:
+                    database[question] = [answer.strip()]
             else:
                 print(f"Invalid row format: {row}")
     return database
@@ -82,7 +87,7 @@ def chatbot(database, text):
     user_question = text.strip().lower()
     most_similar_question, similarity = find_similar_question(user_question, database)
     if similarity > 0.6:  # Adjust this threshold as needed
-        return database[most_similar_question]
+        return random.choice(database[most_similar_question])
     else:
         return "Sorry, I don't have an answer to that question."
 

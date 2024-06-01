@@ -9,18 +9,22 @@ import SwiftUI
 import PythonKit
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
     @State private var answer = ""
     @State private var isShowingAnswer = false
     @State private var question = ""
     @State private var shouldRepeat = false
-    @State var messages: [Message] = []
+    @Binding var messages: [Message]
+    @State var history: History?
+    
+    var startNewChat: (History) -> Void
     
     var body: some View {
         VStack {
             if messages.isEmpty {
                 ContentUnavailableView("Start your conversation", systemImage: "brain.filled.head.profile", description: Text("You can ask whatever you want! Have fun!"))
             } else {
-
+                
                 ScrollViewReader { proxy in
                     List($messages, id: \.self) { message in
                         MessageView(shouldCallRepeat: $shouldRepeat, isShowingAnswer: $isShowingAnswer, currentMessage: message, isLast: .constant(isLastMessage(message.wrappedValue)))
@@ -54,8 +58,12 @@ struct ContentView: View {
                         .padding(.leading, 10)
                     
                     Button {
-                        messages.append(Message(content: question, isCurrentUser: true))
+                        let newMessage = Message(content: question, isCurrentUser: true)
+                        createNewHistory()
+                        messages.append(newMessage)
                         testPython(question)
+                        history?.messages.append(newMessage)
+                        try? modelContext.save()
                         question = ""
                     } label: {
                         if isShowingAnswer {
@@ -87,17 +95,29 @@ struct ContentView: View {
     
     private func testPython(_ question: String) {
         let sys = Python.import("sys")
-        sys.path.append("/Users/stan/Desktop/Swift/ChatBot/ChatBot/")
+        sys.path.append("/Users/stan/Desktop/Swift/ChatBot/ChatBot/PythonFiles/")
         let file = Python.import("LevianPythonScript")
         
-        messages.append(Message(content: String(describing: file.getAnswer(text: question)), isCurrentUser: false))
+        let newMessage = Message(content: String(describing: file.getAnswer(text: question)), isCurrentUser: false)
+        messages.append(newMessage)
+        history?.messages.append(newMessage)
+        try? modelContext.save()
     }
-
+    
     private func isLastMessage(_ message: Message) -> Bool {
         messages.last == message
+    }
+    
+    private func createNewHistory() {
+        if messages.isEmpty {
+            let newHistory = History(messages: [])
+            startNewChat(newHistory)
+            modelContext.insert(newHistory)
+            history = newHistory
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(messages: .constant([]), startNewChat: {_ in })
 }

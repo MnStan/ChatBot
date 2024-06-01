@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
-struct ChatBotApp: App {
+struct ChatBotApp: App {    
     var body: some Scene {
         WindowGroup {
             MainView()
         }
+        .modelContainer(for: History.self)
     }
 }

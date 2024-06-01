@@ -100,7 +100,7 @@ struct MessageCell: View {
                 }
                         .padding(.leading, 10)
                         .opacity(isTyping ? 0.0 : 1.0)
-                        .animation(.easeInOut(duration: 1), value: isTyping)
+                        .animation(.easeInOut(duration: 0.3), value: isTyping)
             }
         }
     }

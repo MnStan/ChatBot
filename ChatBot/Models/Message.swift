@@ -6,12 +6,21 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Message: Hashable {
+@Model
+class Message: Hashable, Identifiable {
     var id = UUID()
+    var date = Date()
     var content: String
     var isCurrentUser: Bool
     var wasLoaded: Bool = false
+    
+    init(content: String, isCurrentUser: Bool, wasLoaded: Bool = false) {
+        self.content = content
+        self.isCurrentUser = isCurrentUser
+        self.wasLoaded = wasLoaded
+    }
     
     static let example = Message(content: "This is test message", isCurrentUser: true)
 }

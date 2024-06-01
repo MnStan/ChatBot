@@ -22,6 +22,7 @@
 		F635A0EB2C0672A5000C6715 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0EA2C0672A5000C6715 /* MessageCell.swift */; };
 		F635A0ED2C072E97000C6715 /* LoadingDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0EC2C072E97000C6715 /* LoadingDotsView.swift */; };
 		F635A0EF2C076D4C000C6715 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0EE2C076D4C000C6715 /* MainView.swift */; };
+		F635A0F52C076F86000C6715 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635A0F42C076F86000C6715 /* History.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		F635A0EA2C0672A5000C6715 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		F635A0EC2C072E97000C6715 /* LoadingDotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDotsView.swift; sourceTree = "<group>"; };
 		F635A0EE2C076D4C000C6715 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F635A0F42C076F86000C6715 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,18 +113,14 @@
 		F635A0B32C066424000C6715 /* ChatBot */ = {
 			isa = PBXGroup;
 			children = (
+				F635A0F32C076F77000C6715 /* Models */,
+				F635A0F22C076F09000C6715 /* PythonFiles */,
+				F635A0F12C076EF9000C6715 /* CustomViews */,
+				F635A0F02C076EE4000C6715 /* Views */,
 				F635A0B42C066424000C6715 /* ChatBotApp.swift */,
-				F635A0B62C066424000C6715 /* ContentView.swift */,
 				F635A0B82C066426000C6715 /* Assets.xcassets */,
 				F635A0BD2C066426000C6715 /* ChatBot.entitlements */,
-				F635A0E42C066862000C6715 /* Database.csv */,
 				F635A0BA2C066426000C6715 /* Preview Content */,
-				F635A0E22C066632000C6715 /* LevianPythonScript.py */,
-				F635A0E62C067262000C6715 /* Message.swift */,
-				F635A0E82C067288000C6715 /* MessageView.swift */,
-				F635A0EA2C0672A5000C6715 /* MessageCell.swift */,
-				F635A0EC2C072E97000C6715 /* LoadingDotsView.swift */,
-				F635A0EE2C076D4C000C6715 /* MainView.swift */,
 			);
 			path = ChatBot;
 			sourceTree = "<group>";
@@ -150,6 +148,43 @@
 				F635A0D22C066426000C6715 /* ChatBotUITestsLaunchTests.swift */,
 			);
 			path = ChatBotUITests;
+			sourceTree = "<group>";
+		};
+		F635A0F02C076EE4000C6715 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F635A0EE2C076D4C000C6715 /* MainView.swift */,
+				F635A0B62C066424000C6715 /* ContentView.swift */,
+				F635A0E82C067288000C6715 /* MessageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F635A0F12C076EF9000C6715 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				F635A0EA2C0672A5000C6715 /* MessageCell.swift */,
+				F635A0EC2C072E97000C6715 /* LoadingDotsView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		F635A0F22C076F09000C6715 /* PythonFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F635A0E42C066862000C6715 /* Database.csv */,
+				F635A0E22C066632000C6715 /* LevianPythonScript.py */,
+			);
+			path = PythonFiles;
+			sourceTree = "<group>";
+		};
+		F635A0F32C076F77000C6715 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F635A0E62C067262000C6715 /* Message.swift */,
+				F635A0F42C076F86000C6715 /* History.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +327,7 @@
 			files = (
 				F635A0E92C067288000C6715 /* MessageView.swift in Sources */,
 				F635A0EF2C076D4C000C6715 /* MainView.swift in Sources */,
+				F635A0F52C076F86000C6715 /* History.swift in Sources */,
 				F635A0ED2C072E97000C6715 /* LoadingDotsView.swift in Sources */,
 				F635A0EB2C0672A5000C6715 /* MessageCell.swift in Sources */,
 				F635A0E72C067262000C6715 /* Message.swift in Sources */,

@@ -113,7 +113,7 @@ struct ContentView: View {
     private func testPython(_ question: String) {
         let sys = Python.import("sys")
         sys.path.append("/Users/stan/Desktop/Swift/ChatBot/ChatBot/PythonFiles/")
-        let file = Python.import("LevianPythonScript")
+        let file = Python.import("Chatbot")
         let pythonReturn = file.getAnswer(text: question, algorithm: selectedAlgorithm, userSimilarity: similarity)
         
         let newMessage = Message(content: String(describing: pythonReturn[0]), isCurrentUser: false, similarityLevel: Double(pythonReturn[1]) ?? 0.0)

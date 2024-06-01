@@ -18,16 +18,18 @@ struct ContentView: View {
     @State var history: History?
     
     var startNewChat: (History) -> Void
+    var algorithms = ["All", "Levenshtein", "Levenshtein Replacement", "Levenshtein Swapping", "Hamming", "Jaro Winkler", "Cosine", "Jaccard", "Qgram"]
+    @State private var selectedAlgorithm = 0
+    @State private var similarity = 0.6
     
     var body: some View {
         VStack {
             if messages.isEmpty {
                 ContentUnavailableView("Start your conversation", systemImage: "brain.filled.head.profile", description: Text("You can ask whatever you want! Have fun!"))
             } else {
-                
                 ScrollViewReader { proxy in
                     List($messages, id: \.self) { message in
-                        MessageView(shouldCallRepeat: $shouldRepeat, isShowingAnswer: $isShowingAnswer, currentMessage: message, isLast: .constant(isLastMessage(message.wrappedValue)))
+                        MessageView(shouldCallRepeat: $shouldRepeat, isShowingAnswer: $isShowingAnswer, currentMessage: message, isLast: .constant(isLastMessage(message.wrappedValue)), similarityLevel: .constant(message.similarityLevel.wrappedValue))
                             .id(message.wrappedValue.id)
                             .listRowSeparator(.hidden)
                     }
@@ -91,14 +93,30 @@ struct ContentView: View {
                 testPython(question)
             }
         }
+        .toolbar {
+            Picker(selection: $selectedAlgorithm) {
+                ForEach(Array(algorithms.enumerated()), id: \.offset) { offset, algorithm in
+                    Text(algorithm).tag(offset)
+                }
+                
+                Section {
+                    Slider(value: $similarity, in: 0...1, step: 0.15) {
+                        Text("Similarity \(similarity, specifier: "%.2f")")
+                    }
+                }
+            } label: {
+                Text(algorithms[selectedAlgorithm])
+            }
+        }
     }
     
     private func testPython(_ question: String) {
         let sys = Python.import("sys")
         sys.path.append("/Users/stan/Desktop/Swift/ChatBot/ChatBot/PythonFiles/")
         let file = Python.import("LevianPythonScript")
+        let pythonReturn = file.getAnswer(text: question, algorithm: selectedAlgorithm, userSimilarity: similarity)
         
-        let newMessage = Message(content: String(describing: file.getAnswer(text: question)), isCurrentUser: false)
+        let newMessage = Message(content: String(describing: pythonReturn[0]), isCurrentUser: false, similarityLevel: Double(pythonReturn[1]) ?? 0.0)
         messages.append(newMessage)
         history?.messages.append(newMessage)
         try? modelContext.save()

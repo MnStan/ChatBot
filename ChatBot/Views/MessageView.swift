@@ -12,6 +12,7 @@ struct MessageView : View {
     @Binding var isShowingAnswer: Bool
     @Binding var currentMessage: Message
     @Binding var isLast: Bool
+    @Binding var similarityLevel: Double
     
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 10) {
@@ -31,7 +32,7 @@ struct MessageView : View {
                 Spacer()
             }
             
-            MessageCell(shouldRepeat: $shouldCallRepeat, isShowingAnswer: $isShowingAnswer, currentMessage: $currentMessage, isLast: $isLast)
+            MessageCell(shouldRepeat: $shouldCallRepeat, isShowingAnswer: $isShowingAnswer, currentMessage: $currentMessage, isLast: $isLast, similarityLevel: $similarityLevel)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -39,6 +40,6 @@ struct MessageView : View {
 
 
 #Preview {
-    MessageCell(shouldRepeat: .constant(false), isShowingAnswer: .constant(true), currentMessage: .constant(.example), isLast: .constant(true))
+    MessageCell(shouldRepeat: .constant(false), isShowingAnswer: .constant(true), currentMessage: .constant(.example), isLast: .constant(true), similarityLevel: .constant(1.0))
         .frame(height: 500)
 }

@@ -21,6 +21,7 @@ struct MessageCell: View {
     @Binding var isShowingAnswer: Bool
     @Binding var currentMessage: Message
     @Binding var isLast: Bool
+    @Binding var similarityLevel: Double
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -97,6 +98,8 @@ struct MessageCell: View {
                         .frame(width: 25, height: 25)
                         .scaleEffect(isRepeatButtonHovered ? 1.2 : 1.0)
                     }
+                    
+                    Text("Similarity: \(similarityLevel, specifier: "%0.3f")").font(.footnote).bold()
                 }
                         .padding(.leading, 10)
                         .opacity(isTyping ? 0.0 : 1.0)
@@ -136,6 +139,6 @@ struct MessageCell: View {
 }
 
 #Preview {
-    MessageCell(shouldRepeat: .constant(false), isShowingAnswer: .constant(true), currentMessage: .constant(.example), isLast: .constant(true))
+    MessageCell(shouldRepeat: .constant(false), isShowingAnswer: .constant(true), currentMessage: .constant(.example), isLast: .constant(true), similarityLevel: .constant(1.0))
         .frame(width: 400, height: 400)
 }

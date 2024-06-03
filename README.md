@@ -76,7 +76,7 @@ Then user can adjust similarity level and click repeat button to get answer.
 
 ## How to run this project
 To run this app locally, you need to add PythonKit package to Xcode project - https://github.com/pvieito/PythonKit
-Also you need to change path, that is appended to sys variable in function testPython in ContentView (remove path from current project and just drag and drop Chatbot.py file from PythonFiles folder, then add '/' to back of this path)
+Also you need to change path, that is appended to sys variable in function testPython in ContentView (remove path from current project and just drag and drop Chatbot.py file from PythonFiles folder inside "", then add '/' to back of this path)
 
 <p align="center">
     <img src="https://github.com/MnStan/ChatBot/assets/58117854/ccee955b-5d17-4657-a409-3e4508439550" />
@@ -94,4 +94,4 @@ And last thin you have to check is inside Chatbot.entitlements check if Key 'App
     <img src="https://github.com/MnStan/ChatBot/assets/58117854/830841e7-78bc-4cb6-914e-7de294dbc7e1" />
   </p>
 
-All of those steps are required by PythonKit framweork to interact with Python code.
+All of those steps are required by PythonKit framework to interact with Python code.

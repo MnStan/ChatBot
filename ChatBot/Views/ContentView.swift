@@ -24,6 +24,10 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Slider(value: $similarity, in: 0...1, step: 0.05) {
+                Text("Similarity \(similarity, specifier: "%.2f")")
+            }
+            
             if messages.isEmpty {
                 ContentUnavailableView("Start your conversation", systemImage: "brain.filled.head.profile", description: Text("You can ask whatever you want! Have fun!"))
             } else {
@@ -90,7 +94,9 @@ struct ContentView: View {
         .onChange(of: shouldRepeat) { _, newValue in
             if newValue {
                 messages.removeLast()
-                testPython(question)
+                if let lastQuestion = messages.last?.content {
+                    testPython(lastQuestion)
+                }
             }
         }
         .toolbar {

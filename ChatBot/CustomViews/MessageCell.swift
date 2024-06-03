@@ -81,7 +81,6 @@ struct MessageCell: View {
                     if isLast {
                         Button {
                             shouldRepeat = true
-                            print("Repeating?")
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 5)

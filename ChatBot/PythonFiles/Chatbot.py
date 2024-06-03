@@ -198,9 +198,9 @@ def find_similar_question(user_question, database, algorithm):
     
     for question in database:
         similarities = [func(user_question.lower(), question) for func in selected_funcs]
-        average_similarity = sum(similarities) / len(similarities)
-        if average_similarity > max_similarity:
-            max_similarity = average_similarity
+#        average_similarity = sum(similarities) / len(similarities)
+        if max(similarities) > max_similarity:
+            max_similarity = max(similarities)
             most_similar_question = question
     return most_similar_question, max_similarity
     
@@ -228,7 +228,7 @@ def load_database(filename):
 def chatbot(database, text, algorithm, userSimilarity):
     user_question = text.strip().lower()
     most_similar_question, similarity = find_similar_question(user_question, database, algorithm)
-    if similarity > userSimilarity:  # Adjust this threshold as needed
+    if similarity > userSimilarity:
         return (random.choice(database[most_similar_question]), similarity)
     else:
         return ("Sorry, I don't have an answer to that question.", similarity)

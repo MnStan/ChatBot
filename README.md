@@ -3,8 +3,9 @@
 
 ## Table of Contents
   * [Technologies](#technologies)
-  * [Algorithms](#Algorithms)
+  * [Algorithms](#algorithms)
   * [App presentation](#app-presentation)
+  * [How to run this project](#how-to-run-this-project)
 
 ## Technologies
   Xcode - 15.4
@@ -73,6 +74,24 @@ Then user can adjust similarity level and click repeat button to get answer.
     <img src="https://github.com/MnStan/ChatBot/assets/58117854/e8291cab-8097-4290-ac44-ccd8e7f6994c" height="500" />
   </p>
 
+## How to run this project
+To run this app locally, you need to add PythonKit package to Xcode project - https://github.com/pvieito/PythonKit
+Also you need to change path, that is appended to sys variable in function testPython in ContentView (remove path from current project and just drag and drop Chatbot.py file from PythonFiles folder, then add '/' to back of this path)
 
+<p align="center">
+    <img src="https://github.com/MnStan/ChatBot/assets/58117854/ccee955b-5d17-4657-a409-3e4508439550" />
+  </p>
 
- 
+Then you have to make sure that 'Disable Library Validation' checkmark is checked under Project->Targets->Signing & Capabilities->Hardened Runtime
+
+<p align="center">
+    <img src="https://github.com/MnStan/ChatBot/assets/58117854/3a5ab7aa-03a5-4f70-9d33-19ffeccec921" />
+  </p>
+
+And last thin you have to check is inside Chatbot.entitlements check if Key 'App Sandbox' is set to 'NO'
+
+<p align="center">
+    <img src="https://github.com/MnStan/ChatBot/assets/58117854/830841e7-78bc-4cb6-914e-7de294dbc7e1" />
+  </p>
+
+All of those steps are required by PythonKit framweork to interact with Python code.
